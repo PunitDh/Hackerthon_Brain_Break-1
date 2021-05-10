@@ -1,0 +1,11 @@
+<%= form_with(model: @post, url: edit_path, method: "patch") do |form| %>
+  <%= form.label :title, "Title" %>
+  <%= form.text_field :title %>
+  <br>
+  <%= form.label :body, "Body" %>
+  <%= form.text_area :body %>
+  <%= form.submit %>
+
+  <%= link_to 'Show', root_path %>
+  <%= link_to 'Back', posts_path %>
+<% end %>
