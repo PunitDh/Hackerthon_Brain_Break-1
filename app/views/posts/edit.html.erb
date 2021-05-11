@@ -1,11 +1,21 @@
 <%= form_with(model: @post, url: edit_path, method: "patch") do |form| %>
-  <%= form.label :title, "Title" %>
+  <%= form.label :title, "Name" %>
   <%= form.text_field :title %>
   <br>
-  <%= form.label :body, "Body" %>
-  <%= form.text_area :body %>
-  <%= form.submit %>
+  <%= form.label :body, "Chocolates" %>
+  <%= form.number_field :body, in: 1..100, step: 1, id: "numchocolates" %>
+  <%= form.button "Add 1 chocolate", id: "chocolatebutton" %>
+  <%= form.submit "Update" %>
 
   <%= link_to 'Show', root_path %>
   <%= link_to 'Back', posts_path %>
 <% end %>
+
+<script>
+  
+  const addchocolate = (event) => {
+    document.getElementById("numchocolates").value = parseInt(document.getElementById("numchocolates").value) + parseInt(1);
+    event.preventDefault();
+  }
+  document.getElementById("chocolatebutton").addEventListener("click",addchocolate);
+</script>

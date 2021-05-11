@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        @post.body = 0
     end
 
     def create
@@ -22,15 +23,13 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id].to_i)
-        # if @post.update(post_params)
-        #   redirect_to(@post)
-        # else
           render "posts/edit"
-        # end
     end
 
     def update
         @post = Post.find(params[:id].to_i)
+        # puts params[:body] += 1
+        # @post.body = @post.body.to_i + 1
         @post.update(post_params)
         redirect_to root_path
     end

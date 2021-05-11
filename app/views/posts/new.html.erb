@@ -1,8 +1,8 @@
 <%= form_with(model: @post) do |form| %>
-  <%= form.label :title, "Title" %>
+  <%= form.label :title, "Name" %>
   <%= form.text_field :title %>
   <br>
-  <%= form.label :body, "Body" %>
-  <%= form.text_area :body %>
+  <%= form.label :body, "Chocolates" %>
+  <%= form.number_field :body, in: 1..100, step: 1 %>
   <%= form.submit %>
 <% end %>
