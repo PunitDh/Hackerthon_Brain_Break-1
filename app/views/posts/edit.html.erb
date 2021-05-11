@@ -1,21 +1,38 @@
-<%= form_with(model: @post, url: edit_path, method: "patch") do |form| %>
-  <%= form.label :title, "Name" %>
-  <%= form.text_field :title %>
-  <br>
-  <%= form.label :body, "Chocolates" %>
-  <%= form.number_field :body, in: 1..100, step: 1, id: "numchocolates" %>
-  <%= form.button "Add 1 chocolate", id: "chocolatebutton" %>
-  <%= form.submit "Update" %>
+<h1 class="jumbotron">Your Personal Choc Count 🍫 </h1>
 
-  <%= link_to 'Show', root_path %>
-  <%= link_to 'Back', posts_path %>
+<table class="table">
+
+<%= form_with(model: @post, url: edit_path, method: "patch") do |form| %>
+  <tr><td>
+  <%= form.label :title, "Name", class: "form-label" %></td>
+  <td>
+  <%= form.text_field :title, class: "form-control" %></td>
+  </tr><tr><td>
+  <%= form.label :body, "Chocolates", class: "form-label" %></td>
+  <td>
+  <%= form.number_field :body, in: 1..100, step: 1, id: "numchocolates", class: "form-control" %></td></tr>
+
+  <tr><td>
+  <%= form.button "Add 1 chocolate 😃", id: "chocolateaddbutton", class: "btn btn-success" %>
+  <%= form.button "Remove 1 chocolate 😭", id: "chocolateremovebutton", class: "btn btn-danger" %>
+  </td><td>
+  <%= form.submit "Update", class: "btn btn-primary" %>
+  <%= link_to 'Show', root_path, class: "btn btn-warning" %>
+  <%= link_to 'Back', posts_path, class: "btn btn-danger" %></td></tr>
 <% end %>
 
+
+</table>
 <script>
-  
   const addchocolate = (event) => {
     document.getElementById("numchocolates").value = parseInt(document.getElementById("numchocolates").value) + parseInt(1);
     event.preventDefault();
   }
-  document.getElementById("chocolatebutton").addEventListener("click",addchocolate);
+
+  const removechocolate = (event) => {
+    document.getElementById("numchocolates").value = parseInt(document.getElementById("numchocolates").value) - parseInt(1);
+    event.preventDefault();
+  }
+  document.getElementById("chocolateaddbutton").addEventListener("click",addchocolate);
+  document.getElementById("chocolateremovebutton").addEventListener("click",removechocolate);
 </script>

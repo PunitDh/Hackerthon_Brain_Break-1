@@ -1,4 +1,23 @@
+
+
+<h1 class="jumbotron">GitChoc Master List 🍫</h1>
+
+<table class="table">
+<thead>
+<th>Name</th>
+<th>Chocolates</th>
+</thead>
+<tbody>
 <% @posts.each do |post| %>
-  <%= post.title %>
-  <%= post.body %>
+<tr><td>
+  <%= post.title %></td><td>
+  <%= post.body %></td>
+
+
+  <td><%= link_to 'View Profile 🍫', show_path(post), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Transform Profile 🍫', edit_path(post), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Execute Profile 🍫', delete_path(post), method: :delete, data: { confirm: 'Are you sure? There is NO TURNING BACK!' }, class: 'btn btn-danger' %></td>
+        </tr>
 <% end %>
+</tbody>
+</table>
